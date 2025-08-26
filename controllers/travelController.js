@@ -44,9 +44,10 @@ const addTravelBook = async (req, res) => {
       image,
       description,
     });
+    res.status(201).json({ message: "success", newTravel });
   } catch (error) {
     res.send(error);
   }
 };
 
-module.exports = { getAllTravels, getTravelById };
+module.exports = { getAllTravels, getTravelById, addTravelBook };
