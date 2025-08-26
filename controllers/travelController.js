@@ -50,4 +50,34 @@ const addTravelBook = async (req, res) => {
   }
 };
 
-module.exports = { getAllTravels, getTravelById, addTravelBook };
+//update travel book
+const UpdateTravelBook = async (req, res) => {
+  try {
+    const { title, image, description } = req.body;
+    const updatedTravel = await Travel.findByIdAndUpdate(req.params.id, {
+      title,
+      image,
+      description,
+    });
+    res.status(200).json({ message: "success", updatedTravel });
+  } catch (error) {
+    res.send(error);
+  }
+};
+//delete travel book
+const DeleteTravelBook = async (req, res) => {
+  try {
+    await Travel.findByIdAndDelete(req.params.id);
+    res.status(200).json({ message: "delete" });
+  } catch (error) {
+    res.send(error);
+  }
+};
+
+module.exports = {
+  getAllTravels,
+  getTravelById,
+  addTravelBook,
+  UpdateTravelBook,
+  DeleteTravelBook,
+};

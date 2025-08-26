@@ -5,6 +5,8 @@ const {
   getAllTravels,
   getTravelById,
   addTravelBook,
+  DeleteTravelBook,
+  UpdateTravelBook,
 } = require("../controllers/travelController");
 
 //get all travel
@@ -15,5 +17,11 @@ router.get("/:id", getTravelById);
 
 //add post
 router.post("add", addTravelBook);
+
+//delete
+router.delete("/:id", DeleteTravelBook);
+
+//update
+router.put("/:id", UpdateTravelBook);
 
 module.exports = router;
