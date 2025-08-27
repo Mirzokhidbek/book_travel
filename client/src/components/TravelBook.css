@@ -1,0 +1,40 @@
+.travel-card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Image styling */
+.travel-card img {
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* Hover effects */
+.travel-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.travel-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Title and text */
+.travel-card .card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.travel-card .card-text {
+  color: #555;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .travel-card img {
+    height: 200px;
+  }
+}
