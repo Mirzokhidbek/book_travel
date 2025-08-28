@@ -1,4 +1,3 @@
-//CRUD
 const { Router } = require("express");
 const router = Router();
 const {
@@ -9,19 +8,19 @@ const {
   UpdateTravelBook,
 } = require("../controllers/travelController");
 
-//get all travel
+// GET all travels
 router.get("/", getAllTravels);
 
-/// get one tavel book
-router.get("/:id", getTravelById);
-
-//add post
+// POST add travel (STATIC route first!)
 router.post("/add", addTravelBook);
 
-//delete
+// GET travel by ID (DYNAMIC route after static)
+router.get("/:id", getTravelById);
+
+// DELETE travel
 router.delete("/:id", DeleteTravelBook);
 
-//update
+// UPDATE travel
 router.put("/:id", UpdateTravelBook);
 
 module.exports = router;

@@ -1,76 +1,77 @@
 const Travel = require("../models/travel.model");
 
-//Method: GET
-//Descr: Get all travels
+// GET all travels
 const getAllTravels = async (req, res) => {
   try {
     const travels = await Travel.find();
     res.status(200).json({
-      message: "succes",
+      message: "success",
       travels,
     });
   } catch (error) {
-    res.send(err);
+    console.error("Error fetching travels:", error);
+    res.status(500).json({ error: error.message });
   }
 };
 
-//Method: GET
-//Descr: Get one travell book by id
-
+// GET travel by ID
 const getTravelById = async (req, res) => {
   try {
     const travel = await Travel.findById(req.params.id);
-    if (!Travel) {
-      return res.status(404).json({
-        message: "Not found",
-      });
+    if (!travel) {
+      return res.status(404).json({ message: "Travel not found" });
     }
-    return res.status(200).json({
-      message: "succes",
-      travel,
-    });
+    res.status(200).json({ message: "success", travel });
   } catch (error) {
-    res.send(error);
+    res.status(500).json({ error: error.message });
   }
 };
-//Method: POST
-//Descr: add new travel book
 
+// POST add new travel
 const addTravelBook = async (req, res) => {
   try {
-    const { title, image, description } = req.body;
-    const newTravel = await Travel.create({
-      title,
-      image,
-      description,
-    });
+    const { title, description, img } = req.body; // match schema field
+    if (!title || !description || !img) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    const newTravel = await Travel.create({ title, description, img });
     res.status(201).json({ message: "success", newTravel });
   } catch (error) {
-    res.send(error);
+    res.status(500).json({ error: error.message });
   }
 };
 
-//update travel book
+// PUT update travel
 const UpdateTravelBook = async (req, res) => {
   try {
-    const { title, image, description } = req.body;
-    const updatedTravel = await Travel.findByIdAndUpdate(req.params.id, {
-      title,
-      image,
-      description,
-    });
+    const { title, description, img } = req.body;
+    const updatedTravel = await Travel.findByIdAndUpdate(
+      req.params.id,
+      { title, description, img },
+      { new: true } // return updated document
+    );
+
+    if (!updatedTravel) {
+      return res.status(404).json({ message: "Travel not found" });
+    }
+
     res.status(200).json({ message: "success", updatedTravel });
   } catch (error) {
-    res.send(error);
+    res.status(500).json({ error: error.message });
   }
 };
-//delete travel book
+
+// DELETE travel
 const DeleteTravelBook = async (req, res) => {
   try {
-    await Travel.findByIdAndDelete(req.params.id);
-    res.status(200).json({ message: "delete" });
+    const deleted = await Travel.findByIdAndDelete(req.params.id);
+    if (!deleted) {
+      return res.status(404).json({ message: "Travel not found" });
+    }
+    res.status(200).json({ message: "Travel deleted" });
   } catch (error) {
-    res.send(error);
+    res.status(500).json({ error: error.message });
   }
 };
 

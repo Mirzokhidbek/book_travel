@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AddBook = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [img, setImg] = useState("");
 
+  const pageNavigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -14,6 +16,7 @@ const AddBook = () => {
         description,
         img,
       });
+      pageNavigate("/");
       alert("Book added successfully!");
     } catch (error) {
       console.error("Error adding book:", error);

@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
-const travelModel = new Schema({
+
+const travelSchema = new Schema({
   title: {
     type: String,
     required: true,
@@ -15,4 +16,4 @@ const travelModel = new Schema({
   },
 });
 
-module.exports = model("Trave", travelModel);
+module.exports = model("Travel", travelSchema);
