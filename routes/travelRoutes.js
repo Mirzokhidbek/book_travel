@@ -16,7 +16,7 @@ router.get("/", getAllTravels);
 router.get("/:id", getTravelById);
 
 //add post
-router.post("add", addTravelBook);
+router.post("/add", addTravelBook);
 
 //delete
 router.delete("/:id", DeleteTravelBook);
