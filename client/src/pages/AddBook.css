@@ -1,0 +1,78 @@
+/* Container for centering the form */
+.addbook-container {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    135deg,
+    #3b82f6,
+    #1e3a8a
+  ); /* blue gradient background */
+  padding: 20px;
+}
+
+/* Card style */
+.addbook-card {
+  background: #ffffff;
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 500px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.addbook-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Headline */
+.addbook-card h2 {
+  font-weight: 700;
+  color: #1e3a8a;
+}
+
+/* Form inputs */
+.addbook-card .form-control {
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  padding: 10px 12px;
+  transition: all 0.3s;
+}
+
+.addbook-card .form-control:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+  outline: none;
+}
+
+/* Submit button */
+.btn-submit {
+  background: #1e3a8a;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.btn-submit:hover {
+  background: #3b82f6;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .addbook-card {
+    padding: 25px 20px;
+  }
+
+  .btn-submit {
+    font-size: 0.95rem;
+    padding: 9px;
+  }
+}

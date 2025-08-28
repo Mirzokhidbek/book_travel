@@ -1,0 +1,66 @@
+.custom-navbar {
+  background: #1e3a8a; /* deep blue */
+  padding: 0.6rem 1rem;
+  transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-navbar .navbar-brand {
+  font-size: 1.7rem;
+  letter-spacing: 1px;
+  color: #ffffff;
+  transition: transform 0.3s;
+}
+
+.custom-navbar .navbar-brand:hover {
+  color: #3b82f6;
+  transform: scale(1.05);
+}
+
+.custom-navbar .nav-link {
+  font-weight: 500;
+  transition: all 0.3s;
+  color: #ffffff !important;
+}
+
+.custom-navbar .nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #3b82f6 !important;
+  transform: scale(1.05);
+}
+
+.custom-navbar .nav-link.active {
+  background: rgba(59, 130, 246, 0.2);
+  color: #3b82f6 !important;
+}
+
+.navbar-user {
+  width: 35px;
+  height: 35px;
+  background: rgba(255, 255, 255, 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.navbar-user:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .custom-navbar .nav-link {
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+  }
+  .navbar-user + span {
+    display: none;
+  }
+}

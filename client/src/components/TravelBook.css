@@ -1,40 +1,65 @@
 .travel-card {
-  border: none;
+  transition: transform 0.3s, box-shadow 0.3s;
   border-radius: 15px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Image styling */
-.travel-card img {
-  height: 250px;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-/* Hover effects */
 .travel-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-.travel-card:hover img {
-  transform: scale(1.1);
+.travel-img {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
 }
 
-/* Title and text */
-.travel-card .card-title {
-  font-size: 1.5rem;
-  font-weight: 700;
+.edit-mode input {
+  border-radius: 10px;
 }
 
-.travel-card .card-text {
-  color: #555;
+.btn-primary {
+  background-color: #007bff;
+  border: none;
 }
 
-/* Responsive improvements */
-@media (max-width: 768px) {
-  .travel-card img {
-    height: 200px;
-  }
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #a71d2a;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #1e7e34;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.card-title {
+  font-size: 1.25rem;
+}
+
+.card-text {
+  font-size: 0.95rem;
 }

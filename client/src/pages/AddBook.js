@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./AddBook.css";
 
 const AddBook = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [img, setImg] = useState("");
+  const navigate = useNavigate();
 
-  const pageNavigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -16,67 +17,72 @@ const AddBook = () => {
         description,
         img,
       });
-      pageNavigate("/");
       alert("Book added successfully!");
+      navigate("/");
     } catch (error) {
       console.error("Error adding book:", error);
+      alert("Failed to add book. Please try again.");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="mb-4 mt-4">
-        <label htmlFor="title" className="form-label">
-          Title
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="title"
-          name="title"
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <div id="emailHelp" className="form-text">
-          Write title of place
-        </div>
-      </div>
+    <div className="addbook-container">
+      <div className="addbook-card">
+        <h2 className="mb-4 text-center">Add New Travel Book</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="title" className="form-label">
+              Title
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Enter place title"
+              required
+            />
+          </div>
 
-      <div className="mb-3">
-        <label htmlFor="description" className="form-label">
-          Description
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="description"
-          name="description"
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <div id="emailHelp" className="form-text">
-          Write your description
-        </div>
-      </div>
+          <div className="mb-3">
+            <label htmlFor="description" className="form-label">
+              Description
+            </label>
+            <textarea
+              className="form-control"
+              id="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Write a short description"
+              rows={3}
+              required
+            ></textarea>
+          </div>
 
-      <div className="mb-3">
-        <label htmlFor="img" className="form-label">
-          Image URL
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="img"
-          name="img"
-          onChange={(e) => setImg(e.target.value)}
-        />
-        <div id="emailHelp" className="form-text">
-          Put your picture URL
-        </div>
-      </div>
+          <div className="mb-3">
+            <label htmlFor="img" className="form-label">
+              Image URL
+            </label>
+            <input
+              type="url"
+              className="form-control"
+              id="img"
+              value={img}
+              onChange={(e) => setImg(e.target.value)}
+              placeholder="Enter image URL"
+              required
+            />
+          </div>
 
-      <button type="submit" className="btn btn-primary">
-        Submit
-      </button>
-    </form>
+          <div className="d-grid mt-4">
+            <button type="submit" className="btn btn-primary btn-submit">
+              Add Travel Book
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
 
